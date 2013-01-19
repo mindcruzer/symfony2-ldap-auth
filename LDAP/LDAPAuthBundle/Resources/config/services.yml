@@ -1,0 +1,9 @@
+services:
+  ldap.security.authentication.provider:
+    class:  LDAP\LDAPAuthBundle\Security\Authentication\Provider\LDAPProvider
+    arguments: ['', %kernel.cache_dir%/security/nonces, '']
+
+  ldap.security.authentication.listener:
+    class:  LDAP\LDAPAuthBundle\Security\Firewall\LDAPListener
+    parent: security.authentication.listener.abstract
+    abstract: true
