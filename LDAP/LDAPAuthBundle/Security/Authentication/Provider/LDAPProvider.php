@@ -15,25 +15,24 @@ class LDAPProvider implements AuthenticationProviderInterface
     private $server;
 
     public function __construct(UserProviderInterface $userProvider, $cacheDir, $server)
-    {
+    {   
         $this->userProvider = $userProvider;
         $this->cacheDir = $cacheDir;
         $this->server = $server;
     }
 
     public function authenticate(TokenInterface $token)
-    {   
+    {  
         $user = $this->userProvider->loadUserByUsername($token->getUsername());
-        
-        if ($user && $this->LDAPValidate($token->getUsername(), $token->password)) {
+
+        if ($user && $this->LDAPValidate($token->getUsername(), $token->getCredentials())) {
             
-            $authenticatedToken = new LDAPUserToken($user->getRoles());
-            $authenticatedToken->setUser($user);
+            $authenticatedToken = new LDAPUserToken($token->getUsername(), $token->getCredentials(), $user->getRoles());
 
             return $authenticatedToken;
         }
 
-        throw new AuthenticationException('The Active Directory authentication failed.');
+        throw new AuthenticationException('Authentication failed.');
     }
 
     protected function LDAPValidate($username, $password)
