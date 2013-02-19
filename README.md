@@ -52,9 +52,6 @@ security:
         ldap_secured:
             ldap: { server: 'my.directoryservices.server' }
             pattern: ^/admin
-            form_login:
-                login_path: /login
-                check_path: /login_check
             logout:
                 path:   /logout
                 target: /login
