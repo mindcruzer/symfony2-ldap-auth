@@ -50,11 +50,11 @@ security:
     firewalls:
         ...
         ldap_secured:
-            ldap: { server: 'my.directoryservices.server' }
-            pattern: ^/admin
-            form_login:
+            ldap: 
+                server: 'my.directoryservices.server'
                 login_path: /login
                 check_path: /login_check
+            pattern: ^/admin
             logout:
                 path:   /logout
                 target: /login
