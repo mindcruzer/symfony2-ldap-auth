@@ -17,9 +17,6 @@ class LDAPAuthenticationProvider extends DaoAuthenticationProvider
         // connect to directory services
         $ldap_conn = ldap_connect(/*'your.server.here'*/);
         
-        var_dump($token->getUsername());
-        var_dump($token->getCredentials());
-
         if ($ldap_conn) {
             
             // attempt binding

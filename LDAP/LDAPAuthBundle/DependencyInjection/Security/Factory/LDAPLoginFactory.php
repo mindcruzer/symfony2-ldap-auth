@@ -39,18 +39,4 @@ class LDAPLoginFactory extends FormLoginFactory
 
         return $provider;
     }
-
-    protected function createListener($container, $id, $config, $userProvider)
-    {
-        $listenerId = parent::createListener($container, $id, $config, $userProvider);
-
-        if (isset($config['csrf_provider'])) {
-            $container
-                ->getDefinition($listenerId)
-                ->addArgument(new Reference($config['csrf_provider']))
-            ;
-        }
-
-        return $listenerId;
-    }
 }
