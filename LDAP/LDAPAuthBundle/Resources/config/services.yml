@@ -3,8 +3,3 @@ services:
     class:  LDAP\LDAPAuthBundle\Security\Authentication\Provider\LDAPAuthenticationProvider
     abstract: true
     arguments: ['', @security.user_checker, '', @security.encoder_factory, %security.authentication.hide_user_not_found%]
-
-  ldap.security.authentication.listener:
-    class:  LDAP\LDAPAuthBundle\Security\Firewall\LDAPAuthenticationListener
-    parent: security.authentication.listener.abstract
-    abstract: true

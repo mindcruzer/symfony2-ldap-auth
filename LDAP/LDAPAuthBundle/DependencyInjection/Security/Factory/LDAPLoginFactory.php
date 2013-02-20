@@ -19,11 +19,6 @@ class LDAPLoginFactory extends FormLoginFactory
         return 'ldap-login';
     }
 
-    protected function getListenerId()
-    {
-        return 'ldap.security.authentication.listener';
-    }
-
     protected function createAuthProvider(ContainerBuilder $container, $id, $config, $userProviderId)
     {
         $provider = 'security.authentication.provider.ldap.'.$id;
