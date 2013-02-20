@@ -15,7 +15,7 @@ class LDAPAuthenticationProvider extends DaoAuthenticationProvider
     protected function checkAuthentication(UserInterface $user, UsernamePasswordToken $token)
     {   
         // connect to directory services
-        $ldap_conn = ldap_connect('sbs.bpiw.local');
+        $ldap_conn = ldap_connect(/*'your.server.here'*/);
         
         var_dump($token->getUsername());
         var_dump($token->getCredentials());

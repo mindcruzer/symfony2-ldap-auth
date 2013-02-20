@@ -49,7 +49,6 @@ security:
         ...
         secured_area:
             ldap_login: 
-                server: 'my.directoryservices.server'
                 login_path: /login
                 check_path: /login_check
             pattern: ^/admin
@@ -58,6 +57,11 @@ security:
                 target: /login
         ...
 ```
+
+##### Step #4
+You'll need to go to `src/LDAP/LDAPAuthBundle/Security/Authentication/Provider/LDAPAuthenticationProvider.php` and 
+enter your server's domain name in this line `$ldap_conn = ldap_connect(/*'your.server.here'*/);`. This is clearly an 
+undesirable place to do this, so I'm working on getting this put into `security.yml`.
 
 ###### You're done.
 
