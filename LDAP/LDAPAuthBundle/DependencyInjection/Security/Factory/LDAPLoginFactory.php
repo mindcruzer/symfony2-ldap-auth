@@ -14,11 +14,6 @@ use Symfony\Component\DependencyInjection\Reference;
  */
 class LDAPLoginFactory extends FormLoginFactory
 {
-    public function getPosition()
-    {
-        return 'pre_auth';
-    }
-
     public function getKey()
     {
         return 'ldap-login';
