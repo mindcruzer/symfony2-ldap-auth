@@ -10,7 +10,7 @@ authorization provider or a user provider. It will only provide authentication. 
 
 #### Configuration
 
-Getting this up and running should only steal about 3 minutes of your life. 
+Getting this up and running should only steal a minute of your life. 
 
 ###### Step #1
 
