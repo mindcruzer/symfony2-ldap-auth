@@ -2,7 +2,7 @@
 
 namespace LDAP\LDAPAuthBundle;
 
-use LDAP\LDAPAuthBundle\DependencyInjection\Security\Factory\LDAPFactory;
+use LDAP\LDAPAuthBundle\DependencyInjection\Security\Factory\LDAPLoginFactory;
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 
@@ -14,6 +14,6 @@ class LDAPAuthBundle extends Bundle
         
         // add the ldap security factory
         $extension = $container->getExtension('security');
-        $extension->addSecurityListenerFactory(new LDAPFactory());
+        $extension->addSecurityListenerFactory(new LDAPLoginFactory());
     }
 }

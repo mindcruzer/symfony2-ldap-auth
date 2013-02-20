@@ -1,9 +1,10 @@
 services:
   ldap.security.authentication.provider:
-    class:  LDAP\LDAPAuthBundle\Security\Authentication\Provider\LDAPProvider
-    arguments: ['', %kernel.cache_dir%/security/nonces, '']
+    class:  LDAP\LDAPAuthBundle\Security\Authentication\Provider\LDAPAuthenticationProvider
+    abstract: true
+    arguments: ['', @security.user_checker, '', @security.encoder_factory, %security.authentication.hide_user_not_found%]
 
   ldap.security.authentication.listener:
-    class:  LDAP\LDAPAuthBundle\Security\Firewall\LDAPListener
+    class:  LDAP\LDAPAuthBundle\Security\Firewall\LDAPAuthenticationListener
     parent: security.authentication.listener.abstract
     abstract: true

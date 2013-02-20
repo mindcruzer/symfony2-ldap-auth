@@ -1,8 +1,6 @@
 ## Symfony2 LDAP Authentication Provider
 
-**Note**: This only works with Symfony 2.1.x+
-
-This budle contains a custom authentication provider for authenticating users with directory services (ex. Active Directory) via LDAP. It will 
+This bundle contains a custom authentication provider for authenticating users with directory services (ex. Active Directory) via LDAP. It will 
 connect to directory services and attempt a bind operation with the provided username and password. This bundle will **not** act as an 
 authorization provider or a user provider. It will only provide authentication. The rest is up to you. 
 
@@ -16,7 +14,7 @@ Getting this up and running should only steal about 3 minutes of your life.
 
 ###### Step #1
 
-Copy the `LDAP` directory from this repo to `src/`.
+Clone and then copy the `LDAP` directory from this repo to `src/`.
 
 ###### Step #2
 
@@ -49,8 +47,11 @@ For example:
 security:
     firewalls:
         ...
-        ldap_secured:
-            ldap: { server: 'my.directoryservices.server' }
+        secured_area:
+            ldap_login: 
+                server: 'my.directoryservices.server'
+                login_path: /login
+                check_path: /login_check
             pattern: ^/admin
             logout:
                 path:   /logout
@@ -64,5 +65,4 @@ security:
 #### Extending
 
 If you want to do a little more than a bind operation to authenticate the user, you can add some custom code to 
-`src/LDAP/LDAPAuthBundle/Security/Authentication/Provider/LDAPProvider.php` (see the LDAPValidate function and 
-the link to the PHP LDAP libraries above).
+`src/LDAP/LDAPAuthBundle/Security/Authentication/Provider/LDAPAuthenticationProvider.php`.
