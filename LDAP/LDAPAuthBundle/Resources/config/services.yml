@@ -1,0 +1,5 @@
+services:
+  ldap.security.authentication.provider:
+    class:  LDAP\LDAPAuthBundle\Security\Authentication\Provider\LDAPAuthenticationProvider
+    abstract: true
+    arguments: ['', @security.user_checker, '', @security.encoder_factory, %security.authentication.hide_user_not_found%]
