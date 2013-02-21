@@ -1,6 +1,6 @@
 ## Symfony2 LDAP Authentication Provider
 
-**NOTE**: This is for Symfony >= 2.1.x.
+**NOTE**: This is for Symfony >= `2.1.x`. There is a `2.0.x` branch if you need it. 
 
 This bundle contains a custom authentication provider for authenticating users with directory services (ex. Active Directory) via LDAP. It will 
 connect to directory services and attempt a bind operation with the provided username and password. This bundle will **not** act as an 
