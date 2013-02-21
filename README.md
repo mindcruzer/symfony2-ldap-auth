@@ -1,7 +1,5 @@
 ## Symfony2 LDAP Authentication Provider
 
-**NOTE**: This is for Symfony >= 2.1.x.
-
 This bundle contains a custom authentication provider for authenticating users with directory services (ex. Active Directory) via LDAP. It will 
 connect to directory services and attempt a bind operation with the provided username and password. This bundle will **not** act as an 
 authorization provider or a user provider. It will only provide authentication. The rest is up to you. 
@@ -36,10 +34,22 @@ class AppKernel extends Kernel
     ...
 }
 ```
-
 ###### Step #3
 
+Import the security factory configuration into `security.yml`.
+
+```PHP
+security:
+    factories:
+        - "%kernel.root_dir%/../src/LDAP/LDAPAuthBundle/Resources/config/security_factories.yml"
+    ...
+```
+
+###### Step #4
+
 Set up your security firewall. 
+
+This is more or less the same as how you'd set up a firewall with `form_login`. 
 
 For example:
 
@@ -60,7 +70,7 @@ security:
         ...
 ```
 
-###### Step #4
+###### Step #5
 You'll need to go to `src/LDAP/LDAPAuthBundle/Security/Authentication/Provider/LDAPAuthenticationProvider.php` and 
 enter your server's domain name in this line `$ldap_conn = ldap_connect(/*'your.server.here'*/);`. This is clearly an 
 undesirable place to do this, so I'm working on getting this put into `security.yml`.

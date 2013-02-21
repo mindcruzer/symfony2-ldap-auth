@@ -1,0 +1,5 @@
+services:
+  security.authentication.factory.ldap:
+    class:  LDAP\LDAPAuthBundle\DependencyInjection\Security\Factory\LDAPLoginFactory
+    tags:
+        - { name: security.listener.factory }

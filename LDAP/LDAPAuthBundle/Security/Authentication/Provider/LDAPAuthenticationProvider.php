@@ -15,7 +15,7 @@ class LDAPAuthenticationProvider extends DaoAuthenticationProvider
     protected function checkAuthentication(UserInterface $user, UsernamePasswordToken $token)
     {   
         // connect to directory services
-        $ldap_conn = ldap_connect(/*'your.server.here'*/);
+        $ldap_conn = ldap_connect('sbs.bpiw.local');
         
         if ($ldap_conn) {
             
@@ -29,7 +29,7 @@ class LDAPAuthenticationProvider extends DaoAuthenticationProvider
         }
         
         ldap_close($ldap_conn);
-
+        
         // not authenticated
         throw new BadCredentialsException("Incorrect username or password.");
     }
