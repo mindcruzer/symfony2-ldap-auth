@@ -73,7 +73,7 @@ security:
 ###### Step #5
 You'll need to go to `src/LDAP/LDAPAuthBundle/Security/Authentication/Provider/LDAPAuthenticationProvider.php` and 
 enter your server's domain name in this line `$ldap_conn = ldap_connect(/*'your.server.here'*/);`. This is clearly an 
-undesirable place to do this, so I'm working on getting this put into `security.yml`.
+undesirable place to do this, but I never got around to moving this setting to `security.yml`, and I don't use Symfony anymore. However, if you check out the Symfony docs I believe it shows you how. 
 
 ###### You're done.
 
